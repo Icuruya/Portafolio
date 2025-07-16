@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Metadatos -->
+    <title>José Garza | Especialista en Automatización y Datos</title>
+    <meta name="description" content="Portafolio de José Garza, especialista en la optimización de procesos, pipelines ETL y desarrollo de soluciones de datos con Python y n8n.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://URL-DE-TU-PORTAFOLIO.com/">
+    <meta property="og:title" content="José Garza | Especialista en Automatización y Datos">
+    <meta property="og:description" content="Transformo procesos complejos en flujos de trabajo eficientes con Python y n8n.">
+    <meta property="og:image" content="https://placehold.co/1200x630/111827/a78bfa?text=Portafolio+JG">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://URL-DE-TU-PORTAFOLIO.com/">
+    <meta property="twitter:title" content="José Garza | Especialista en Automatización y Datos">
+    <meta property="twitter:description" content="Transformo procesos complejos en flujos de trabajo eficientes con Python y n8n.">
+    <meta property="twitter:image" content="https://placehold.co/1200x630/111827/a78bfa?text=Portafolio+JG">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" />
+
+    <style>
+        :root {
+            --bg-primary: #111827; /* Gris oscuro azulado */
+            --bg-secondary: #1F2937; /* Gris más claro */
+            --text-primary: #E5E7EB; /* Gris muy claro */
+            --text-secondary: #9CA3AF; /* Gris medio */
+            --accent: #a78bfa; /* Púrpura suave */
+            --accent-dark: #8b5cf6;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        .glass-effect {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(167, 139, 250, 0.1);
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title {
+            position: relative;
+            display: flex;
+            align-items: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            position: relative;
+            top: 2px;
+            width: 200px;
+            height: 1px;
+            margin-left: 20px;
+            background-color: #374151; /* Gris oscuro */
+        }
+
+        .highlight-text {
+            color: var(--accent);
+        }
+
+        /* Estilos para la simulación de n8n */
+        .n8n-node {
+            background-color: var(--bg-secondary);
+            border: 1px solid #374151;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+        }
+        .n8n-node:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 0 2px var(--accent);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-content {
+            background-color: var(--bg-secondary);
+            transition: transform 0.3s ease;
+        }
+
+        /* Animación para el SVG */
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        .svg-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw 3s ease-in-out forwards;
+        }
+        #svg-circle-1, #svg-circle-2, #svg-circle-3 {
+            animation: pulse 2s infinite ease-in-out;
+        }
+        #svg-circle-2 { animation-delay: 0.5s; }
+        #svg-circle-3 { animation-delay: 1s; }
+        @keyframes pulse {
+            0% { r: 4; opacity: 0.5; }
+            50% { r: 6; opacity: 1; }
+            100% { r: 4; opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out glass-effect">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-black" style="color: var(--accent);">JG</a>
+            <div class="hidden md:flex items-center space-x-8 text-sm">
+                <a href="#about" class="hover:text-[var(--accent)] transition-colors duration-300">Sobre mí</a>
+                <a href="#automations" class="hover:text-[var(--accent)] transition-colors duration-300">Automatizaciones</a>
+                <a href="#dashboard" class="hover:text-[var(--accent)] transition-colors duration-300">Dashboard</a>
+                <a href="#contact" class="hover:text-[var(--accent)] transition-colors duration-300">Contacto</a>
+                <a href="https://www.linkedin.com/in/josegarza1" target="_blank" class="border border-[var(--accent)] text-[var(--accent)] px-4 py-2 rounded-lg hover:bg-[var(--accent)] hover:text-gray-900 transition-all duration-300">
+                    LinkedIn
+                </a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-2xl text-[var(--accent)] z-50">
+                <i id="menu-icon" class="fas fa-bars"></i>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-inherit">
+            <a href="#about" class="block py-2 px-6 text-sm hover:bg-[var(--bg-secondary)]">Sobre mí</a>
+            <a href="#automations" class="block py-2 px-6 text-sm hover:bg-[var(--bg-secondary)]">Automatizaciones</a>
+            <a href="#dashboard" class="block py-2 px-6 text-sm hover:bg-[var(--bg-secondary)]">Dashboard</a>
+            <a href="#contact" class="block py-2 px-6 text-sm hover:bg-[var(--bg-secondary)]">Contacto</a>
+            <a href="https://www.linkedin.com/in/josegarza1" target="_blank" class="block py-2 px-6 text-sm hover:bg-[var(--bg-secondary)]">LinkedIn</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 md:px-16 lg:px-24">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex flex-col justify-center items-start">
+            <div class="fade-in-up">
+                <p class="text-lg text-[var(--accent)] mb-4 font-mono">Hola, mi nombre es</p>
+                <h1 class="text-4xl md:text-7xl font-bold text-slate-100">José Garza.</h1>
+                <h2 class="text-4xl md:text-6xl font-bold text-slate-400 mt-2">Construyo soluciones con datos.</h2>
+                <p class="mt-6 max-w-xl text-slate-400">
+                    Soy un especialista en automatización y datos con más de 4 años de experiencia transformando procesos complejos en flujos de trabajo eficientes. Mi pasión es crear pipelines ETL con <span class="highlight-text">Python</span> y orquestar workflows con <span class="highlight-text">n8n</span> para optimizar la velocidad y precisión de los datos.
+                </p>
+                <div class="mt-8">
+                    <a href="mailto:eduardgo29@hotmail.com" class="bg-[var(--accent)] text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-[var(--accent-dark)] transition-all duration-300">
+                        ¡Hablemos!
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24">
+            <h2 class="section-title fade-in-up text-3xl">Sobre mí</h2>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
+                <div class="md:col-span-3 text-slate-400 space-y-4 fade-in-up" style="animation-delay: 200ms;">
+                    <p>Mi trayectoria se centra en la optimización de procesos, donde he logrado mejoras de hasta un 80% en la velocidad de procesamiento y una reducción significativa de errores manuales. Mi enfoque combina un profundo conocimiento de <span class="highlight-text">Python</span> (Pandas, NumPy) con la agilidad de plataformas iPaaS como <span class="highlight-text">n8n</span> para crear soluciones robustas.</p>
+                    <p>Además, tengo experiencia en la administración de servidores Linux, bases de datos y la creación de dashboards en Power BI para una visualización clara de los KPIs.</p>
+                    <ul class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm font-mono">
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-[var(--accent)] text-xs mr-2"></i>Python (Pandas)</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-[var(--accent)] text-xs mr-2"></i>n8n (iPaaS)</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-[var(--accent)] text-xs mr-2"></i>Power BI (DAX)</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-[var(--accent)] text-xs mr-2"></i>Linux (Debian/CUPS)</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-[var(--accent)] text-xs mr-2"></i>SQL (MySQL, SQLite)</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-[var(--accent)] text-xs mr-2"></i>OCR (Tesseract)</li>
+                    </ul>
+                </div>
+                <div class="md:col-span-2 flex justify-center items-center fade-in-up" style="animation-delay: 300ms;">
+                    <svg width="250" height="250" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-title">
+                        <title id="svg-title">Animación abstracta de flujo de datos</title>
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:var(--accent-dark);stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:var(--accent);stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path class="svg-path" d="M 50,20 L 150,20 Q 180,20 180,50 L 180,150 Q 180,180 150,180 L 50,180 Q 20,180 20,150 L 20,50 Q 20,20 50,20" fill="none" stroke="url(#grad1)" stroke-width="2"/>
+                        <circle id="svg-circle-1" cx="50" cy="100" r="4" fill="var(--accent)"/>
+                        <path class="svg-path" d="M 50,100 C 80,130 120,70 150,100" fill="none" stroke="#4A5568" stroke-width="1.5" style="animation-delay: 1s;"/>
+                        <circle id="svg-circle-2" cx="100" cy="100" r="4" fill="var(--accent)"/>
+                        <circle id="svg-circle-3" cx="150" cy="100" r="4" fill="var(--accent)"/>
+                        <text x="65" y="95" font-family="monospace" font-size="12" fill="#9CA3AF">&lt;data&gt;</text>
+                        <text x="70" y="115" font-family="monospace" font-size="12" fill="#9CA3AF">&lt;/data&gt;</text>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Automations Section -->
+        <section id="automations" class="py-24">
+            <h2 class="section-title fade-in-up text-3xl">Simulaciones de Workflows</h2>
+            <p class="text-slate-400 mb-12 max-w-3xl fade-in-up">
+                Estos son ejemplos visuales de pipelines que he diseñado. Cada flujo es interactivo: <span class="font-bold text-slate-200">haz clic en un nodo</span> para ver una muestra del código o la lógica utilizada en ese paso.
+            </p>
+            
+            <!-- Fiscal Automation -->
+            <div class="mb-20 fade-in-up">
+                <h3 class="text-2xl font-bold mb-4 text-slate-200">1. Pipeline de Datos Fiscales</h3>
+                <div class="p-6 md:p-8 rounded-lg border border-gray-800 bg-[var(--bg-secondary)]">
+                    <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-8 md:gap-x-8">
+                        <div class="n8n-node group" data-code-id="code-start">
+                            <i class="fas fa-play-circle text-green-400 text-2xl mr-3"></i>
+                            <div><h4 class="font-bold text-slate-200">Inicio</h4><p class="text-xs text-slate-400">Carga Excel</p></div>
+                        </div>
+                        <div class="hidden md:block text-slate-500 text-2xl">&rarr;</div>
+                        <div class="n8n-node group" data-code-id="code-clean">
+                            <i class="fas fa-broom text-blue-400 text-2xl mr-3"></i>
+                            <div><h4 class="font-bold text-slate-200">Limpieza</h4><p class="text-xs text-slate-400">Pandas Script</p></div>
+                        </div>
+                        <div class="hidden md:block text-slate-500 text-2xl">&rarr;</div>
+                        <div class="n8n-node group" data-code-id="code-ocr">
+                            <i class="fas fa-search text-yellow-400 text-2xl mr-3"></i>
+                            <div><h4 class="font-bold text-slate-200">OCR</h4><p class="text-xs text-slate-400">Tesseract</p></div>
+                        </div>
+                        <div class="hidden md:block text-slate-500 text-2xl">&rarr;</div>
+                        <div class="n8n-node group" data-code-id="code-generate">
+                            <i class="fas fa-file-word text-purple-400 text-2xl mr-3"></i>
+                            <div><h4 class="font-bold text-slate-200">Generar</h4><p class="text-xs text-slate-400">python-docx</p></div>
+                        </div>
+                        <div class="hidden md:block text-slate-500 text-2xl">&rarr;</div>
+                        <div class="n8n-node group" data-code-id="code-print">
+                            <i class="fas fa-print text-red-400 text-2xl mr-3"></i>
+                            <div><h4 class="font-bold text-slate-200">Imprimir</h4><p class="text-xs text-slate-400">SSH a CUPS</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chatbot Automation -->
+            <div class="fade-in-up">
+                <h3 class="text-2xl font-bold mb-4 text-slate-200">2. Chatbot Inteligente para Agendar</h3>
+                <div class="p-6 md:p-8 rounded-lg border border-gray-800 bg-[var(--bg-secondary)]">
+                    <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-8 md:gap-x-8">
+                        <div class="n8n-node group" data-code-id="code-webhook"><i class="fas fa-comment-dots text-green-400 text-2xl mr-3"></i><div><h4 class="font-bold text-slate-200">Webhook</h4><p class="text-xs text-slate-400">Recibir Mensaje</p></div></div>
+                        <div class="hidden md:block text-slate-500 text-2xl">&rarr;</div>
+                        <div class="n8n-node group" data-code-id="code-get-context"><i class="fas fa-database text-blue-400 text-2xl mr-3"></i><div><h4 class="font-bold text-slate-200">Contexto</h4><p class="text-xs text-slate-400">Consulta SQL</p></div></div>
+                        <div class="hidden md:block text-slate-500 text-2xl">&rarr;</div>
+                        <div class="n8n-node group" data-code-id="code-openai"><i class="fas fa-brain text-purple-400 text-2xl mr-3"></i><div><h4 class="font-bold text-slate-200">LLM</h4><p class="text-xs text-slate-400">OpenAI</p></div></div>
+                        <div class="hidden md:block text-slate-500 text-2xl">&rarr;</div>
+                        <div class="n8n-node group" data-code-id="code-switch"><i class="fas fa-random text-yellow-400 text-2xl mr-3"></i><div><h4 class="font-bold text-slate-200">Decisión</h4><p class="text-xs text-slate-400">Switch Logic</p></div></div>
+                        <div class="hidden md:block text-slate-500 text-2xl">&rarr;</div>
+                        <div class="n8n-node group" data-code-id="code-calendar"><i class="fas fa-calendar-check text-red-400 text-2xl mr-3"></i><div><h4 class="font-bold text-slate-200">Agendar</h4><p class="text-xs text-slate-400">Google Calendar</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="py-24">
+            <h2 class="section-title fade-in-up text-3xl">Dashboard de KPIs</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+                <div class="bg-[var(--bg-secondary)] p-6 rounded-lg border border-gray-800 fade-in-up">
+                    <p class="text-sm text-slate-400 mb-2">Documentos Procesados</p>
+                    <p class="text-4xl font-bold text-[var(--accent)] kpi-value" data-target="10524">0</p>
+                </div>
+                <div class="bg-[var(--bg-secondary)] p-6 rounded-lg border border-gray-800 fade-in-up" style="animation-delay: 150ms;">
+                    <p class="text-sm text-slate-400 mb-2">Precisión de Datos</p>
+                    <p class="text-4xl font-bold text-[var(--accent)] kpi-value" data-target="99.1" data-decimal="1">0.0%</p>
+                </div>
+                <div class="bg-[var(--bg-secondary)] p-6 rounded-lg border border-gray-800 fade-in-up" style="animation-delay: 300ms;">
+                    <p class="text-sm text-slate-400 mb-2">Optimización de Tiempo</p>
+                    <p class="text-4xl font-bold text-[var(--accent)] kpi-value" data-target="80">~0%</p>
+                </div>
+            </div>
+            <div class="mt-12 bg-[var(--bg-secondary)] p-8 rounded-lg border border-gray-800 fade-in-up">
+                <h3 class="text-xl font-bold text-slate-200 mb-6">Estado por Lote de Impresión</h3>
+                <div class="space-y-4">
+                    <!-- Lote A -->
+                    <div>
+                        <div class="flex justify-between mb-1 text-sm"><span class="text-slate-300">Lote A</span><span class="text-slate-400">100%</span></div>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5"><div class="bg-[var(--accent)] h-2.5 rounded-full progress-bar" data-width="100%"></div></div>
+                    </div>
+                    <!-- Lote B -->
+                    <div>
+                        <div class="flex justify-between mb-1 text-sm"><span class="text-slate-300">Lote B</span><span class="text-slate-400">100%</span></div>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5"><div class="bg-[var(--accent)] h-2.5 rounded-full progress-bar" data-width="100%"></div></div>
+                    </div>
+                    <!-- Lote C -->
+                    <div>
+                        <div class="flex justify-between mb-1 text-sm"><span class="text-slate-300">Lote C (En Proceso)</span><span class="text-slate-400">75%</span></div>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5"><div class="bg-[var(--accent)] h-2.5 rounded-full progress-bar" data-width="75%"></div></div>
+                    </div>
+                    <!-- Lote D -->
+                    <div>
+                        <div class="flex justify-between mb-1 text-sm"><span class="text-slate-300">Lote D (Pendiente)</span><span class="text-slate-400">0%</span></div>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5"><div class="bg-[var(--accent)] h-2.5 rounded-full progress-bar" data-width="0%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 text-center">
+            <h2 class="text-lg font-mono text-[var(--accent)] fade-in-up">04. ¿Qué sigue?</h2>
+            <h3 class="text-4xl md:text-5xl font-bold text-slate-100 mt-2 mb-6 fade-in-up" style="animation-delay: 100ms;">Ponte en Contacto</h3>
+            <p class="max-w-xl mx-auto text-slate-400 mb-10 fade-in-up" style="animation-delay: 200ms;">
+                Siempre estoy abierto a nuevas oportunidades y colaboraciones. Si tienes un proyecto de automatización en mente o simplemente quieres saludar, no dudes en enviarme un mensaje.
+            </p>
+            <div class="fade-in-up" style="animation-delay: 300ms;">
+                <a href="mailto:eduardgo29@hotmail.com" class="bg-transparent border border-[var(--accent)] text-[var(--accent)] font-bold py-3 px-8 rounded-lg hover:bg-[var(--accent)] hover:text-gray-900 transition-all duration-300">
+                    Enviar Mensaje
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="text-center py-6 text-xs text-slate-500 font-mono">
+        <p>Diseñado y Construido por José Garza</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="code-modal" class="modal fixed inset-0 bg-black bg-opacity-70 z-[1000] hidden items-center justify-center p-4">
+        <div class="modal-content w-full max-w-4xl max-h-[90vh] p-6 rounded-lg border border-gray-700 relative flex flex-col">
+            <button id="close-modal" class="absolute top-4 right-6 text-2xl text-slate-400 hover:text-[var(--accent)]">&times;</button>
+            <h3 id="modal-title" class="text-2xl font-bold text-[var(--accent)] mb-2"></h3>
+            <p id="modal-subtitle" class="text-sm text-slate-400 mb-4"></p>
+            <div class="overflow-y-auto">
+                <pre><code id="modal-code" class="language-python"></code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Mobile Menu ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                document.body.classList.toggle('no-scroll', !isHidden);
+                menuIcon.classList.toggle('fa-bars', isHidden);
+                menuIcon.classList.toggle('fa-times', !isHidden);
+            });
+            
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    document.body.classList.remove('no-scroll');
+                    menuIcon.classList.add('fa-bars');
+                    menuIcon.classList.remove('fa-times');
+                });
+            });
+
+            // --- Header Scroll Effect ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => header.classList.toggle('shadow-lg', window.scrollY > 50));
+
+            // --- Intersection Observer for Animations ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        const kpiValue = entry.target.querySelector('.kpi-value');
+                        if (kpiValue && !kpiValue.dataset.animated) {
+                            animateValue(kpiValue);
+                        }
+
+                        const progressBar = entry.target.querySelector('.progress-bar');
+                        if (progressBar && !progressBar.dataset.animated) {
+                            progressBar.style.width = progressBar.dataset.width + '%';
+                            progressBar.dataset.animated = 'true';
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+            function animateValue(element) {
+                element.dataset.animated = 'true';
+                const target = parseFloat(element.dataset.target);
+                const isDecimal = element.dataset.decimal;
+                const duration = 1500;
+                let start = 0;
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsedTime = currentTime - startTime;
+                    const progress = Math.min(elapsedTime / duration, 1);
+                    let currentValue = progress * target;
+
+                    if (isDecimal) {
+                        element.textContent = currentValue.toFixed(1) + '%';
+                    } else if (element.textContent.startsWith('~')) {
+                         element.textContent = '~' + Math.floor(currentValue) + '%';
+                    } else {
+                        element.textContent = Math.floor(currentValue).toLocaleString('es-MX');
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                         if (isDecimal) {
+                            element.textContent = target.toFixed(1) + '%';
+                        } else if (element.textContent.startsWith('~')) {
+                             element.textContent = '~' + Math.floor(target) + '%';
+                        } else {
+                            element.textContent = target.toLocaleString('es-MX');
+                        }
+                    }
+                }
+                requestAnimationFrame(update);
+            }
+
+            // --- Modal Logic ---
+            const modal = document.getElementById('code-modal');
+            const closeModalButton = document.getElementById('close-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalSubtitle = document.getElementById('modal-subtitle');
+            const modalCode = document.getElementById('modal-code');
+            const nodes = document.querySelectorAll('.n8n-node');
+            
+            const codeSnippets = {
+                'code-start': { title: '1. Inicio y Carga de Datos', subtitle: 'Carga de Excel (Predial/Multas)', code: `# generador.py: Carga de la BD Maestra y datos de origen\ndef cargar_bd_maestra_unificada(mode_config):\n    ruta_excel_bd = Path(mode_config["master_db_file_path"])\n    # ... Lógica para leer el archivo de Excel con Pandas ...\n    # ... y asegurar la integridad de las columnas y tipos de datos.\n    return df`, lang: 'python' },
+                'code-clean': { title: '2. Limpieza y Estandarización', subtitle: 'Script Python (Pandas)', code: `# generador.py: Limpieza y normalización de datos\ndef limpiar_texto(texto_original):\n    # ... Lógica con unicodedata y re para limpiar acentos y caracteres especiales ...\n    return texto_final`, lang: 'python' },
+                'code-ocr': { title: '3. OCR y Validación de Escaneos', subtitle: 'Tesseract y PyMuPDF', code: `# GeneradorPredial_logica.py: Extracción de datos con OCR\ndef extract_expediente_from_page_scan_predial(page_fitz_obj, config):\n    # ... Lógica para convertir página de PDF a imagen con PyMuPDF ...\n    # ... y usar Pytesseract para extraer texto de un área específica.\n    texto_extraido = pytesseract.image_to_string(img.crop(area), lang='spa')\n    # ... Lógica de regex para encontrar el expediente.\n    return expediente_encontrado`, lang: 'python' },
+                'code-generate': { title: '4. Generación de Documentos', subtitle: 'Script Python (python-docx)', code: `# GeneradorMultas_logica.py: Creación de DOCX\ndef procesar_tabla_dinamica_multas(tabla_obj, registros_df_oficio):\n    # ... Lógica para eliminar filas de plantilla en una tabla de python-docx ...\n    for idx, fila_datos in registros_df_oficio.iterrows():\n        nueva_fila_tabla = tabla_obj.add_row()\n        # ... Lógica para llenar las celdas de la nueva fila con datos ...`, lang: 'python' },
+                'code-print': { title: '5. Impresión y Reporte', subtitle: 'SSH (Paramiko) a CUPS', code: `# impresion.py: Envío de trabajos de impresión a servidor Linux\ndef send_to_cups_ssh(local_pdf_path, cups_printer_name, cups_options):\n    ssh_client = paramiko.SSHClient()\n    # ... Lógica para conectar vía SSH con Paramiko ...\n    # ... Transferir archivo con SFTP ...\n    lp_command = f"lp -d '{cups_printer_name}' {cups_options} '{remote_path}'"\n    # ... Ejecutar comando lp y manejar la respuesta ...`, lang: 'python' },
+                'code-webhook': { title: 'Webhook (Entrada)', subtitle: 'Recibir mensaje de usuario', code: `{\n  "user_id": "user-1234",\n  "session_id": "sess-abcd",\n  "message": "¿Pueden ayudarme con un proyecto de automatización?",\n  "timestamp": "2025-07-16T19:30:00Z"\n}`, lang: 'json' },
+                'code-get-context': { title: 'Obtener Contexto', subtitle: 'Cargar información de servicios', code: `SELECT \n    service_name, \n    description, \n    base_price\nFROM \n    services\nWHERE \n    keywords LIKE '%automatizacion%' OR \n    keywords LIKE '%python%';`, lang: 'sql' },
+                'code-openai': { title: 'Procesamiento con LLM', subtitle: 'Entender intención del usuario', code: `# Prompt enviado a la API de OpenAI\nprompt = f"""\nContexto de servicios: {services_context}\nHistorial de conversación: {chat_history}\nMensaje del usuario: "{user_message}"\n\nExtrae la intención (Agendar, Cotizar, PreguntaGeneral) y las entidades clave.\nResponde en formato JSON.\n"""`, lang: 'python' },
+                'code-switch': { title: 'Determinar Intención', subtitle: 'Ruta del flujo: ¿Agendar, Cotizar o Charlar?', code: `// Lógica de un nodo Switch en n8n\nconst intent = {{ $json.llm_response.intent }};\n\nif (intent === 'Agendar') {\n  return [null, $json, null]; // Salida 1: Agendar\n} else if (intent === 'Cotizar') {\n  return [$json, null, null]; // Salida 0: Cotizar\n} else {\n  return [null, null, $json]; // Salida 2: Charlar\n}`, lang: 'javascript' },
+                'code-calendar': { title: 'Agendar Cita', subtitle: 'Verificar disponibilidad y crear evento', code: `// Datos para crear un evento en Google Calendar API\nconst event = {\n  'summary': 'Reunión de Proyecto: Automatización',\n  'description': 'Discutir requerimientos para el nuevo proyecto.',\n  'start': {\n    'dateTime': '2025-07-20T10:00:00-06:00',\n    'timeZone': 'America/Monterrey',\n  },\n  'end': {\n    'dateTime': '2025-07-20T10:30:00-06:00',\n    'timeZone': 'America/Monterrey',\n  }\n};`, lang: 'javascript' }
+            };
+
+            nodes.forEach(node => {
+                node.addEventListener('click', () => {
+                    const codeId = node.dataset.codeId;
+                    const data = codeSnippets[codeId];
+                    if (data) {
+                        modalTitle.textContent = data.title;
+                        modalSubtitle.textContent = data.subtitle;
+                        modalCode.textContent = data.code;
+                        modalCode.className = 'language-' + data.lang;
+                        Prism.highlightElement(modalCode);
+                        modal.classList.remove('hidden');
+                        modal.classList.add('flex');
+                    }
+                });
+            });
+
+            function closeModal() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+
+            closeModalButton.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+        });
+    </script>
+</body>
+</html>
